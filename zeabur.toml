@@ -10,4 +10,5 @@ restartPolicyType = "on-failure"
 restartPolicyMaxRetries = 10
 
 [env]
-PYTHON_VERSION = "3.11" 
+PYTHON_VERSION = "3.11"
+FLASK_ENV = "production" 

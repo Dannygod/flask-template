@@ -73,17 +73,7 @@ def check_auth(f):
     return decorated_function
 
 # 3. 設定資料庫連線資訊
-# !!! 強烈建議 !!! 這些敏感資訊應該放在 .env 檔案中，而不是直接寫在程式碼裡
-# 這裡為了教學方便先直接寫出
-load_dotenv('../.env')
-db_config = {
-    'host': os.getenv('host'),
-    'user': os.getenv('user'),
-    'password': os.getenv('password'),
-    'database': os.getenv('database'),
-    'port': os.getenv('port'),
-    'use_pure': True
-}
+db_config = app.config['DB_CONFIG']
 
 def decimal_to_float(obj):
     if isinstance(obj, list):
@@ -1022,4 +1012,4 @@ def get_following_players(decoded_token):
 
 # 6. 讓程式可以被執行
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000), host='0.0.0.0')
+    app.run(debug=True, port=int(os.getenv("APP_PORT", default=5000)), host='0.0.0.0')
